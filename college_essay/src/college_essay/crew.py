@@ -163,6 +163,7 @@ class CollegeEssay():
 			agents=[self.essay_generator(), self.critic_reviewer()], 
 			tasks=[self.essay_task(), self.critic_task()],
 			process=Process.sequential,  # Ensure the essay is written before critique
+			memory=True,
 			verbose=True
 			
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
