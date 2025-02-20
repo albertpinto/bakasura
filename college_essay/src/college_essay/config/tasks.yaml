@@ -1,0 +1,30 @@
+essay_task:
+  description: >
+    Write a compelling 400-word essay for the {program} application, using only the information provided in {file_content}. 
+    Ensure the essay is engaging, original, and tailored to the application requirements.
+  expected_output: >
+    A 400-word essay that highlights the applicant's unique qualities, experiences, and aspirations. 
+    The essay should have an original story, a clear heading, and a conclusion that resonates with the application,created using only the content from {file_content}.
+    The heading should feature {student}'s name with a phrase of at least four words.
+    The conclusion should also include the {college}'s name and the {program} the {student} is applying to.
+    Make sure the essay includes a heading, conclusion, and that it reads naturally without signs of AI generation.
+  agent: essay_generator
+
+critic_task:
+  description: >
+    You are a seasoned college application essay reviewer. Your job is to improve the clarity, engagement, and effectiveness of the essay. 
+    Edit the essay directly to enhance its authenticity, originality, and overall impact while maintaining the applicant’s unique voice.
+  expected_output: >
+    A revised version of the essay that includes all necessary improvements,created using only the content from {file_content}. 
+    Ensure the essay remains within 400 words, has a strong heading, a compelling conclusion, and reads naturally.
+    The heading should feature {student}'s name with a phrase of at least four words.
+    The conclusion should also include the {college}'s name and the {program} the {student} is applying to.
+  agent: critic_reviewer
+markdown_task:
+  description: >
+    Format the essay content provided in  using markdown syntax. 
+    Ensure the essay is well-structured, with appropriate headings, lists, and emphasis.
+  expected_output: >
+    A well-formatted version of the essay content using markdown syntax.
+    The essay should be visually appealing, with clear headings, lists, and emphasis to enhance readability.
+  agent: markdown

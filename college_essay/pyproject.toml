@@ -1,0 +1,25 @@
+[project]
+name = "college_essay"
+version = "0.1.0"
+description = "college-essay using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0",
+    "fastapi>=0.115.8",
+    "uvicorn>=0.34.0",
+]
+
+[project.scripts]
+college_essay = "college_essay.main:run"
+run_crew = "college_essay.main:run"
+train = "college_essay.main:train"
+replay = "college_essay.main:replay"
+test = "college_essay.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
