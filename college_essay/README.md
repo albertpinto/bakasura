@@ -10,14 +10,25 @@ First, if you haven't already, install uv:
 
 ```bash
 pip install uv
+
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## Create your project structure
+cd ~/Documents
+uv init crewaiprojects --python 3.12
+uv sync --upgrade
+source .venv/bin/activate
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
+
+## Install crewAI dependencies
+
+uv add crewai crewai[tools]
+
+## Add crewAI project
+
+uv crewai create crew college-essay or crewai create crew college-essay
+
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
@@ -32,7 +43,7 @@ crewai install
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
-$ crewai run
+$ uv run /home/albert/Documents/crewaiprojects/.venv/bin/python /home/albert/Documents/crewaiprojects/college_essay/src/college_essay/college_essay_streaming.py
 ```
 
 This command initializes the college-essay Crew, assembling the agents and assigning them tasks as defined in your configuration.
@@ -43,12 +54,4 @@ This example, unmodified, will run the create a `report.md` file with the output
 
 The college-essay Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
 
-## Support
 
-For support, questions, or feedback regarding the CollegeEssay Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
