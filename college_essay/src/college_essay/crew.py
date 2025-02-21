@@ -82,6 +82,7 @@ class CollegeEssay():
 			groq_api_key=os.getenv("GROQ_API_KEY")
 			return LLM(
 				model="groq/llama-3.3-70b-versatile",
+                #model="deepseek-r1-distill-llama-70b",        
 				temperature=0.7,
 				api_key=groq_api_key,
 				base_url="https://api.groq.com/openai/v1"
