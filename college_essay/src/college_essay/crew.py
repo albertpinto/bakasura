@@ -69,26 +69,29 @@ class CollegeEssay():
 		self.output_file = output_file
 		self.llm = self._set_llm()
 
+	# def _set_llm(self):
+	# 	if self.model in ['gpt-4o', 'gpt-3.5-turbo', 'claude-2', 'o1-preview', 'o1-mini', 'groq_llm']:
+	# 		return self.model
+	# 	else:
+	# 		return LLM(model="ollama/" + self.model, base_url="http://localhost:11434")
+	
 	def _set_llm(self):
-		if self.model.startswith('gemini'):
-			if genai is None:
-				raise ImportError("google-generativeai package is required for Gemini models")
-			# Configure Gemini API
-			api_key = os.getenv('GOOGLE_API_KEY')
-			if not api_key:
-				raise ValueError("GOOGLE_API_KEY environment variable is not set")
-			genai.configure(api_key=api_key)
-			# Always specify the model name for Gemini
-			if self.model == 'gemini/gemini-1.5-flash':
-				return LLM(provider="gemini", 
-			   			  model="gemini/gemini-1.5-flash",
-						  api_key=os.getenv('GOOGLE_API_KEY'))
-			else:
-				return LLM(provider="gemini", model=self.model)
+		"""Sets the correct LLM instance based on the model selected."""
+		if self.model.startswith("groq"):
+			# Instantiate Groq LLM
+			groq_api_key=os.getenv("GROQ_API_KEY")
+			return LLM(
+				model="groq/llama-3.3-70b-versatile",
+				temperature=0.7,
+				api_key=groq_api_key,
+				base_url="https://api.groq.com/openai/v1"
+			)
 		elif self.model in ['gpt-4o', 'gpt-3.5-turbo', 'claude-2', 'o1-preview', 'o1-mini']:
-			return self.model
+			# Assuming OpenAI or Claude models are handled elsewhere
+			return self.model  
 		else:
-			return LLM(model="ollama/"+ self.model, base_url="http://localhost:11434")
+			# Default to Ollama for local models
+			return LLM(model="ollama/" + self.model, base_url="http://localhost:11434")
 	@agent
 	def essay_generator(self) -> Agent:
 		# The json_output parameter automatically enforces the CollegeEssayModel.

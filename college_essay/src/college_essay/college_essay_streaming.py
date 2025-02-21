@@ -24,9 +24,6 @@ app.add_middleware(
 UPLOAD_DIR = "college_essay/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-
-
-
 class StreamingCollegeEssayCrewRunner(CollegeEssay):
     def __init__(self, model,input_file):
         super().__init__(model, input_file)
@@ -144,6 +141,9 @@ async def college_essay_stream(program: str, student: str, college: str, resume_
         yield f"data: Agent backstory:{agent.backstory} is starting work\n\n"
         await asyncio.sleep(0.5)
   
+    # uncomment the line below to train the crew
+    #custom_crew.train(inputs=inputs,n_iterations=1, filename='training.pkl')
+    #custom_crew.test(n_iterations=1, openai_model_name='gpt-4o')
     result = custom_crew.kickoff(inputs=inputs)
     yield f"data: Crew execution completed. Result: {result}\n\n"
          # Convert essay to PDF

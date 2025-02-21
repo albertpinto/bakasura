@@ -142,7 +142,7 @@ const CollegeEssayStreamer = () => {
 
   const models = [
     'o1-preview', 'o1-mini', 'gpt-4o', 'gpt-3.5-turbo', 
-    'mistral-nemo', 'llama3','llama3.1','llama3.2', 'deepseek-r1:8b'
+    'mistral-nemo', 'llama3','llama3.1','llama3.2', 'deepseek-r1:8b','groq_llm'
   ];
 
   const colleges = [
