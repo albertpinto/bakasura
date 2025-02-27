@@ -1,0 +1,13 @@
+research_task:
+  description: >
+    Your task is to research news on a given topic and provide a detailed summary of the key points.
+  expected_output: >
+    A set of headlines and summaries of the latest news articles related to the given topic.
+  agent: researcher
+
+review_task:
+  description: >
+    Your task is to review the research done by the researcher, provide feedback, and suggest additional sources or information.
+  expected_output: >
+    A markdown-formatted document with feedback on the research, suggestions for additional sources or information, and a summary of the key points.
+  agent: senior_researcher
